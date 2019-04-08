@@ -22,6 +22,16 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.get('/teste', async (req, res) => {
+  try {
+    return res.json({
+    	"conexão": "Concluida",
+    });
+  } catch (err) {
+    return res.status(400).send({ error: 'Falha no servidor heroku, mas conexão feita' });
+  }
+});
+
 
 
 module.exports = app => app.use('/api', router);
