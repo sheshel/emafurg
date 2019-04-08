@@ -11,6 +11,8 @@ const app = express();									//Cria o app
 app.use(bodyParser.json());								//Configura para usar json
 app.use(bodyParser.urlencoded({ extend: false }));		//Configura para usar urlencode
 
+require('./app/controllers/EmaController')(app);		//Usar o controler
+
 const PORT = process.env.PORT || 8089;					//Usar a porta 8089 em localhost ou a padrao definida no server
 app.listen(PORT,() => {
   console.log("Servidor Rodando");
