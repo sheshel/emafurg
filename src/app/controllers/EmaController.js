@@ -3,8 +3,13 @@ const router = express.Router();
 
 const Registros = require('../models/registro');
 
-router.get('/', (req, res) => {
-  res.send();
+router.get('/', async (req, res) => {
+  try {
+    const reg = await Registros.find();
+    return res.send({ reg });
+  } catch (err) {
+    return res.status(400).send({ error: 'Erro ao carregar os registros' });
+  }
 });
 
 router.post('/', async (req, res) => {
